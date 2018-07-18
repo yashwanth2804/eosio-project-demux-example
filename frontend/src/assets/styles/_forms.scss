@@ -18,4 +18,11 @@ button, .btn, submit {
   padding: 1rem 1.5rem;
   font-size: 1rem;
   cursor: pointer;
+  background: linear-gradient(135deg,#6BDAD5 0%,#4E82DB 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  &.secondary {
+    background: transparent;
+    padding: .9rem 1.4rem;
+    border: 2px solid #5fb7d8;
+    color: #5fb7d8;
+  }
 }

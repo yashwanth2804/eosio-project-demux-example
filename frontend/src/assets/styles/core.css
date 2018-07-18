@@ -17,6 +17,9 @@ svg:not(:root) {
 .margin-bottom-15 {
   margin-bottom: 15px; }
 
+.margin-right-15 {
+  margin-right: 15px; }
+
 .padding-30 {
   padding: 30px; }
 
@@ -60,7 +63,14 @@ button, .btn, submit {
   color: #ffffff;
   padding: 1rem 1.5rem;
   font-size: 1rem;
-  cursor: pointer; }
+  cursor: pointer;
+  background: linear-gradient(135deg, #6BDAD5 0%, #4E82DB 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
+  button.secondary, .btn.secondary, submit.secondary {
+    background: transparent;
+    padding: .9rem 1.4rem;
+    border: 2px solid #5fb7d8;
+    color: #5fb7d8; }
 
 .search {
   background: #0D163A; }
@@ -70,7 +80,7 @@ button, .btn, submit {
     position: absolute;
     top: 0;
     height: 70px;
-    width: 100%;
+    width: calc(100vw - 80px);
     background: 0;
     border: 0;
     color: #ffffff;
@@ -86,9 +96,46 @@ button, .btn, submit {
 
 .card-item {
   background: #ffffff;
-  padding: 2rem 1.5rem;
   box-shadow: 0px 0px 20px #eaeaea;
-  border-radius: .3rem; }
+  border-radius: .5rem;
+  overflow: hidden; }
+
+.card-footer {
+  background: #141C47;
+  color: #ffffff; }
+
+.layoutStandard .createContainer {
+  height: 0;
+  overflow: hidden;
+  padding: 0; }
+
+.layoutStandard .toggleCreate {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background: #141C47;
+  cursor: pointer;
+  background: linear-gradient(135deg, #6BDAD5 0%, #4E82DB 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
+  .layoutStandard .toggleCreate span {
+    display: block;
+    background: #ffffff;
+    height: 3px;
+    width: 30px;
+    position: absolute;
+    left: 15px;
+    top: 30px; }
+    .layoutStandard .toggleCreate span:nth-child(1) {
+      transform: rotate(90deg); }
+
+.layoutStandard.createOpen .createContainer {
+  height: auto; }
+
+.layoutStandard.createOpen .toggleCreate span:nth-child(1) {
+  opacity: 0; }
 
 .layoutStandard .logo, .layoutStandard .search {
   height: 70px;

@@ -1,39 +1,76 @@
 import React, { Component } from 'react';
+import Fuse from "fuse.js"
 
 import EOSClient from '../../Utils/eos-client';
 import CreatePost from './CreatePost';
 import Display from './Display';
-import Search from './Search';
 import Logo from '../../assets/img/logo-inverted.svg';
+
+import fuseConfig from "./fuseConfig";
 
 class Posts extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       loading: false,
-      posts: []
+      createOpen: false,
+      posts: [],
+      postsFiltered: [],
+      onEnter: false,
+      filters: [],
+      returnedAmount: 25,
     };
+
     const contractAccount = process.env.REACT_APP_EOS_ENV === 'local' ? process.env.REACT_APP_EOS_LOCAL_CONTRACT_ACCOUNT : process.env.REACT_APP_EOS_TEST_CONTRACT_ACCOUNT;
     this.eos = new EOSClient(contractAccount, contractAccount);
-    this.loadPosts();
   }
 
-  loadPosts = () => {
+  componentDidMount() {
     this.eos
       .getTableRows('post')
       .then(data => {
         console.log(data);
         this.setState({ posts: data.rows });
+        this.setState({
+          postsFiltered: this.state.posts,
+        });
       })
       .catch(e => {
         console.error(e);
       });
-  };
+  }
+
+  handleKeyPress = (event) => {
+    if (event.target.value !== "" ) {
+      const enter = () => {
+        if(event.key === "Enter"){
+          keyUp()
+        }
+      }
+      const keyUp = () => {
+        var fuse = new Fuse(this.state.posts, fuseConfig)
+        this.setState({
+          filters: event.target.value,
+          postsFiltered: fuse.search(event.target.value).slice(0,this.state.returnedAmount),
+        })
+      }
+  this.state.onEnter ? enter() : keyUp()
+    } else {
+      this.setState({
+        postsFiltered: this.state.posts,
+      })
+    }
+  }
+
+  toggleCreate = () => {
+    this.setState({
+      createOpen: !this.state.createOpen
+    });
+  }
 
   createPost = post => {
-    this.setState({ loading: true });
-
-    this.setState({ posts: [...this.state.posts, post] });
+    this.setState({ loading: true, posts: [...this.state.posts, post] });
 
     this.eos
       .transaction(
@@ -109,14 +146,24 @@ class Posts extends Component {
 
   render() {
     return (
-      <div className="layoutStandard">
+      <div className={"layoutStandard " + (this.state.createOpen ? 'createOpen' : '')}>
+        <div
+          className="toggleCreate"
+          onClick={this.toggleCreate}
+        >
+          <span></span>
+          <span></span>
+        </div>
         <div className="logo">
           <a href="/">
             <img src={Logo} alt="Eos.io"/>
           </a>
         </div>
         <div className="search">
-          <Search />
+          <input
+            placeholder="Search"
+            onKeyUp={this.handleKeyPress}
+          />
         </div>
         <div className="main">
           <CreatePost createPost={this.createPost} />
@@ -127,7 +174,7 @@ class Posts extends Component {
               updatePost={this.updatePost}
               likePost={this.likePost}
               state={this.state}
-              posts={this.state.posts}
+              posts={this.state.postsFiltered}
             />
           </div>
         </div>
@@ -137,5 +184,3 @@ class Posts extends Component {
 }
 
 export default Posts;
-
-//<input type="text" placeholder="Search cards" />

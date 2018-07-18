@@ -7,15 +7,18 @@ const Display = ({toggleUpdatingPost, savePost, deletePost, likePost, props, sta
 
   if (!updating) return (
     <div className='card-item'>
-      <span onClick={deletePost}>Delete | </span>
-      <span onClick={toggleUpdatingPost}>Update | </span>
-      <span onClick={likePost}>Like </span>
-      <hr />
-      <h3>{state.post.title}</h3>
-      <h5>By {props.post.author}</h5>
-      <p>Likes {state.post.likes} | Tags {'#' + state.post.tag}</p>
-      <hr />
-      <p>{state.post.content}</p>
+      <div className="padding-30">
+        <h3>{state.post.title}</h3>
+        <h5>By {props.post.author}</h5>
+        <p>Likes {state.post.likes} | Tags {'#' + state.post.tag}</p>
+        <hr />
+        <p>{state.post.content}</p>
+      </div>
+      <div className="padding-30 card-footer text-align-center">
+        <span onClick={deletePost}>Delete | </span>
+        <span onClick={toggleUpdatingPost}>Update | </span>
+        <span onClick={likePost}>Like </span>
+      </div>
     </div>
   )
   return (

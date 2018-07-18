@@ -30,14 +30,14 @@ const Display = ({ toggleUpdatingPost, handleOnChange, props, state }) => (
           props.savePost(state.post, e);
         }}
         type="submit"
-        className="login-form-button"
+        className="margin-right-15"
       >
         Update
       </button>
       <button
         onClick={toggleUpdatingPost}
         type="submit"
-        className="login-form-button"
+        className="secondary"
       >
         Cancel
       </button>

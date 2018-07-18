@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Display = ({handleOnChange, formSubmit}) => (
-  <div className="padding-30 border-bottom">
+  <div className="createContainer padding-30 border-bottom">
     <form className="card-item">
         <input
           className="margin-bottom-15"
