@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 
+import EOSClient from '../../Utils/eos-client';
+import CreatePost from './CreatePost';
 import Display from './Display';
-import EOSClient from './eos-client';
+import Search from './Search';
+import Logo from '../../assets/img/logo-inverted.svg';
 
-class App extends Component {
+class Posts extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -106,15 +109,33 @@ class App extends Component {
 
   render() {
     return (
-      <Display
-        createPost={this.createPost}
-        deletePost={this.deletePost}
-        updatePost={this.updatePost}
-        likePost={this.likePost}
-        state={this.state}
-      />
+      <div className="layoutStandard">
+        <div className="logo">
+          <a href="/">
+            <img src={Logo} alt="Eos.io"/>
+          </a>
+        </div>
+        <div className="search">
+          <Search />
+        </div>
+        <div className="main">
+          <CreatePost createPost={this.createPost} />
+          <div className="cards">
+            <Display
+              createPost={this.createPost}
+              deletePost={this.deletePost}
+              updatePost={this.updatePost}
+              likePost={this.likePost}
+              state={this.state}
+              posts={this.state.posts}
+            />
+          </div>
+        </div>
+      </div>
     );
   }
 }
 
-export default App;
+export default Posts;
+
+//<input type="text" placeholder="Search cards" />

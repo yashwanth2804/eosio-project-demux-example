@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+  *:focus {
+    outline: 0; }
+
+::placeholder {
+  color: #888888; }
+
+img {
+  border: 0;
+  display: block; }
+
+svg:not(:root) {
+  overflow: hidden; }
+
+.margin-bottom-15 {
+  margin-bottom: 15px; }
+
+.padding-30 {
+  padding: 30px; }
+
+.border-bottom {
+  border-bottom: 1px solid #E1D9F0; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0; }
+
+hr {
+  border: none;
+  height: 1px;
+  background: #eaeaea;
+  margin: 1rem 0; }
+
+.text-align-center {
+  text-align: center; }
+
+.text-align-left {
+  text-align: left; }
+
+.text-align-right {
+  text-align: right; }
+
+input, textarea {
+  width: 100%;
+  border: 2px solid #eaeaea;
+  border-radius: .3rem;
+  color: #222222;
+  padding: 1rem 1.5rem;
+  font-size: 1rem; }
+  input:focus, textarea:focus {
+    border-color: #000000; }
+
+button, .btn, submit {
+  border: none;
+  background: #141C47;
+  border-radius: .3rem;
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer; }
+
+.search {
+  background: #0D163A; }
+  .search ::placeholder {
+    color: #ffffff; }
+  .search input {
+    position: absolute;
+    top: 0;
+    height: 70px;
+    width: 100%;
+    background: 0;
+    border: 0;
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0px 30px; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-gap: 30px;
+  padding: 30px; }
+
+.card-item {
+  background: #ffffff;
+  padding: 2rem 1.5rem;
+  box-shadow: 0px 0px 20px #eaeaea;
+  border-radius: .3rem; }
+
+.layoutStandard .logo, .layoutStandard .search {
+  height: 70px;
+  color: #ffffff; }
+
+.layoutStandard .logo {
+  background: #141C47;
+  width: 80px;
+  float: left; }
+  .layoutStandard .logo a {
+    display: block;
+    margin: 25px auto;
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+    position: relative; }
+    .layoutStandard .logo a img {
+      margin: -14px 0 0 30px; }
+
+.layoutStandard .main {
+  min-height: 100vh;
+  grid-area: main;
+  background: #EEF2F9; }

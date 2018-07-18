@@ -1,0 +1,27 @@
+.layoutStandard {
+  .logo, .search {
+    height: 70px;
+    color: #ffffff;
+  }
+  .logo {
+    background: #141C47;
+    width: 80px;
+    float: left;
+    a {
+      display: block;
+      margin: 25px auto;
+      text-align: center;
+      color: #ffffff;
+      text-decoration: none;
+      position: relative;
+      img {
+        margin: -14px 0 0 30px;
+      }
+    }
+  }
+  .main {
+    min-height: 100vh;
+    grid-area: main;
+    background: #EEF2F9;
+  }
+}

@@ -1,0 +1,21 @@
+input, textarea {
+  width: 100%;
+  border: 2px solid #eaeaea;
+  border-radius: .3rem;
+  color: #222222;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  &:focus {
+    border-color: #000000;
+  }
+}
+
+button, .btn, submit {
+  border: none;
+  background: #141C47;
+  border-radius: .3rem;
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
