@@ -2,13 +2,13 @@ import React from 'react';
 
 import Post from './Post/Post';
 
-const Posts = ({ posts, deletePost, editPost, likePost }) => {
+const Posts = ({ posts, deletePost, update, likePost }) => {
   return posts.map((post, index) => {
     return (
       <Post
         post={post}
         deletePost={deletePost}
-        editPost={editPost}
+        update={update}
         likePost={likePost}
         key={index}
       />

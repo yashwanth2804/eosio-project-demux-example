@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
-import EOSClient from './lib/eos-client';
-import CreatePost from './CreatePost/CreatePost';
-import Posts from './Posts/Posts';
-import './App.css';
+import Display from './Display';
+import EOSClient from './eos-client';
 
 class App extends Component {
   constructor(props) {
@@ -58,7 +56,7 @@ class App extends Component {
 
     this.eos
       .transaction(process.env.REACT_APP_EOS_ACCOUNT,
-        'deletepost', 
+        'deletepost',
         {
           pkey
         })
@@ -72,10 +70,10 @@ class App extends Component {
       });
   };
 
-  editPost = (post, e) => {
+  updatePost = (post, e) => {
     this.eos
       .transaction(process.env.REACT_APP_EOS_ACCOUNT,
-        'editpost', 
+        'editpost',
         {
           ...post
         })
@@ -92,7 +90,7 @@ class App extends Component {
   likePost = (pkey, e) => {
     this.eos
       .transaction(
-        process.env.REACT_APP_EOS_ACCOUNT, 
+        process.env.REACT_APP_EOS_ACCOUNT,
         'likepost', {
           pkey
         })
@@ -108,19 +106,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="pure-g">
-          <div className="pure-u-1">
-            <Posts
-              posts={this.state.posts}
-              deletePost={this.deletePost}
-              editPost={this.editPost}
-              likePost={this.likePost}
-            />
-            <CreatePost createPost={this.createPost} />
-          </div>
-        </div>
-      </div>
+      <Display
+        createPost={this.createPost}
+        deletePost={this.deletePost}
+        updatePost={this.updatePost}
+        likePost={this.likePost}
+        state={this.state}
+      />
     );
   }
 }
