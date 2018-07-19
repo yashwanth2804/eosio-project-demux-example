@@ -2,7 +2,7 @@ import React from 'react';
 
 const Display = ({ toggleUpdatingPost, handleOnChange, props, state }) => (
   <div>
-    <form className="EditPost">
+    <div className="EditPost padding-30">
       <input
         className="margin-bottom-15"
         name="title"
@@ -41,7 +41,7 @@ const Display = ({ toggleUpdatingPost, handleOnChange, props, state }) => (
       >
         Cancel
       </button>
-    </form>
+    </div>
   </div>
 )
 export default Display;

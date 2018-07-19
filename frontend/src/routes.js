@@ -3,11 +3,22 @@ import LayoutBase from './Layouts/LayoutBase'
 
 // Import Pages
 import Posts from './Pages/Posts'
-import Post from './Pages/Posts/Post'
+import Post from './Pages/Post'
 import NotFound from './Pages/NotFound'
 
 // A route config is just a data object passed into <Route> component.
 export default [
+  {
+    path: '/pages',
+    component: Posts,
+    routes: [
+      {
+        path: '/posts/:id',
+        component: Post,
+        name: 'Post',
+      },
+    ],
+  },
   {
     path: '/',
     component: LayoutBase,
@@ -20,7 +31,7 @@ export default [
       },
       {
         path: '/posts/:id',
-        component: Post,
+        component: Posts,
         name: 'Post',
       },
       {

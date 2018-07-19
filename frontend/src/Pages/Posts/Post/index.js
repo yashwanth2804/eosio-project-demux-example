@@ -7,6 +7,7 @@ class Post extends Component {
     updating: false,
     liked: false,
     post: {
+      index: this.props.post.pkey,
       title: this.props.post.title,
       content: this.props.post.content,
       tag: this.props.post.tag,
@@ -18,6 +19,8 @@ class Post extends Component {
     this.setState(prevState => ({
       updating: !prevState.updating
     }));
+    console.log(this.props.post.pkey);
+    //console.log(this.posts.filter((post, index) => this.post.pkey !== pkey));
   };
 
   savePost = (post, e) => {

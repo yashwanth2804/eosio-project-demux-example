@@ -1,29 +1,29 @@
 import React from 'react';
 
-const Display = ({handleOnChange, formSubmit}) => (
+const Create = ({ handlePostChange, handlePostSubmit }) => (
   <div className="createContainer padding-30 border-bottom">
     <div className="card-item padding-30">
       <input
         className="margin-bottom-15"
         name="title"
-        onChange={handleOnChange}
+        onChange={handlePostChange}
         placeholder="Title"
       />
       <textarea
         className="margin-bottom-15"
         name="content"
-        onChange={handleOnChange}
+        onChange={handlePostChange}
         rows={4}
         placeholder="Content"
       />
       <input
         className="margin-bottom-15"
         name="tag"
-        onChange={handleOnChange}
+        onChange={handlePostChange}
         placeholder="Tag"
       />
       <button
-        onClick={formSubmit}
+        onClick={handlePostSubmit}
         type="submit"
         className="login-form-button"
       >
@@ -32,4 +32,4 @@ const Display = ({handleOnChange, formSubmit}) => (
     </div>
   </div>
 )
-export default Display;
+export default Create;
