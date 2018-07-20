@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+// import { BrowserRouter as Router } from 'react-router-dom'
+// import { renderRoutes } from 'react-router-config'
+// import Fuse from "fuse.js"
+
+// import fuseConfig from "./fuseConfig";
+
 import { BrowserRouter as Router } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
+import routes from './routes' // Add routing config
 import { object, shape, func } from 'prop-types';
 
-import routes from './routes' // Add routing config
 import EOSClient from './Utils/eos-client';
 import './assets/styles/core.css' // Add SCSS Styling
 
@@ -127,3 +133,11 @@ App.childContextTypes = {
 }
 
 export default App;
+
+//  {...this.state}
+
+// state={this.state}
+// handlePostChange={this.handlePostChange}
+// createPost={this.createPost}
+// handlePostSubmit={this.handlePostSubmit}
+// toggleCreate={this.toggleCreate}

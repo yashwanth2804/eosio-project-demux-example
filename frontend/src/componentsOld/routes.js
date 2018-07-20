@@ -2,7 +2,7 @@
 import Base from './Base'
 
 // Import Pages
-import Posts from './Posts'
+import Home from './Home'
 import Post from './Post'
 import NotFound from './NotFound'
 
@@ -17,7 +17,7 @@ export default [
           {
             path: '/',
             exact: true,
-            component: Posts,
+            component: Home,
             name: 'Posts',
           },
           {
