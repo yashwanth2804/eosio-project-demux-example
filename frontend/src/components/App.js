@@ -15,12 +15,20 @@ class App extends Component {
       createOpen: false,
       loading: false,
       posts: [],
-      draftPost: {
+      temporaryPost: {
         id: '',
         title: '',
         content: '',
         tag: '',
-      }
+      },
+      activePost: {
+        pkey: '',
+        title: '',
+        author: '',
+        content: '',
+        likes: '',
+        tag: '',
+      },
     };
 
     const contractAccount = process.env.REACT_APP_EOS_ENV === 'local' ? process.env.REACT_APP_EOS_LOCAL_CONTRACT_ACCOUNT : process.env.REACT_APP_EOS_TEST_CONTRACT_ACCOUNT;
@@ -44,8 +52,8 @@ class App extends Component {
   // Create / Edit Post
   handlePostChange = e => {
     this.setState({
-      draftPost: {
-        ...this.state.draftPost,
+      temporaryPost: {
+        ...this.state.temporaryPost,
         [e.target.name]: e.target.value
       }
     });
@@ -76,9 +84,9 @@ class App extends Component {
   handlePostSubmit = e => {
     console.log('sub');
     e.preventDefault();
-    this.createPost({ ...this.state.draftPost, likes: 0, id: Date.now() });
+    this.createPost({ ...this.state.temporaryPost, likes: 0, id: Date.now() });
     this.setState({
-      draftPost: {
+      temporaryPost: {
         id: '',
         title: '',
         content: '',
@@ -94,6 +102,29 @@ class App extends Component {
     });
   }
 
+
+
+  // Create / Edit Post
+  handlePostRouting = (pkey, title, author, content, likes, tag) => {
+    console.log(pkey, title, author, content, likes, tag);
+    this.setState({
+      activePost: {
+        pkey: pkey,
+        title: title,
+        author: author,
+        content: content,
+        likes: likes,
+        tag: tag,
+      }
+    });
+    // this.setState({
+    //   temporaryPost: {
+    //     ...this.state.temporaryPost,
+    //     [e.target.name]: e.target.value
+    //   }
+    // });
+  };
+
   // Set Child Context So We Don't Have To Pass State As Props
   getChildContext() {
     return {
@@ -102,12 +133,11 @@ class App extends Component {
       createPost: this.createPost,
       handlePostSubmit: this.handlePostSubmit,
       toggleCreate: this.toggleCreate,
+      handlePostRouting: this.handlePostRouting,
     }
   }
 
   render() {
-    // console.log("App State:");
-    // console.log(this.state);
     return (
       <Router>
         {renderRoutes(routes)}
@@ -124,6 +154,7 @@ App.childContextTypes = {
   createPost: func,
   handlePostSubmit: func,
   toggleCreate: func,
+  handlePostRouting: func,
 }
 
 export default App;

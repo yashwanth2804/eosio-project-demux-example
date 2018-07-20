@@ -5,10 +5,6 @@ import Create from './Create';
 import Logo from './assets/img/logo-inverted.svg';
 
 const Posts = (props, context) => {
-  // console.log("Posts props:");
-  // console.log(props);
-  // console.log("Posts context:");
-  // console.log(context.store);
   return (
     <div className={ "layoutStandard " + (context.store.createOpen ? 'createOpen' : '') }>
       <div className="logo">
@@ -30,6 +26,8 @@ const Posts = (props, context) => {
           {context.store.posts.map(({ pkey, title, author, content, likes, tag }, index) => (
             <div className='card-item' key={index}>
               <div className="padding-30">
+                <Link to=`posts/${pkey}` params={{ testvalue: "hello" }}>Create Idea</Link>
+                <strong onClick={context.handlePostRouting.bind(pkey, title, author, content, likes, tag)}>Update Post</strong>
                 <p>Title {title}</p>
                 <p>By {author}</p>
                 <p>Content {content}</p>
@@ -50,6 +48,7 @@ Posts.contextTypes = {
   createPost: func,
   handlePostSubmit: func,
   toggleCreate: func,
+  handlePostRouting: func,
 };
 
 export default Posts;
